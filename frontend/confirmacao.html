@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍔 BurgerExpress - Pedido Confirmado</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="confirmacao.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header class="confirmacao-header">
+            <h1><i class="fas fa-check-circle"></i> Pedido Confirmado!</h1>
+            <p>Seu pedido está sendo preparado com muito carinho</p>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <main class="confirmacao-container">
+            <!-- Card de Confirmação -->
+            <div class="confirmacao-card">
+                <div class="confirmacao-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                
+                <h2 id="numero-pedido">Carregando...</h2>
+                <p class="confirmacao-status" id="status-pedido">Processando pedido</p>
+                
+                <div class="tempo-entrega-info">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <p>Tempo estimado de entrega</p>
+                        <h3 id="tempo-entrega">30-40 minutos</h3>
+                    </div>
+                </div>
+                
+                <div class="metodo-pagamento-info">
+                    <i class="fas fa-credit-card"></i>
+                    <div>
+                        <p>Método de pagamento</p>
+                        <h3 id="metodo-pagamento">PIX</h3>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumo do Pedido -->
+            <section class="resumo-confirmacao">
+                <h2><i class="fas fa-receipt"></i> Resumo do Pedido</h2>
+                
+                <div class="endereco-entrega">
+                    <h3><i class="fas fa-map-marker-alt"></i> Endereço de Entrega</h3>
+                    <p id="endereco-confirmacao">Carregando endereço...</p>
+                </div>
+                
+                <div class="itens-confirmacao">
+                    <h3><i class="fas fa-list"></i> Itens do Pedido</h3>
+                    <div id="lista-itens-confirmacao"></div>
+                </div>
+                
+                <div class="total-confirmacao">
+                    <div class="linha-total">
+                        <span>Subtotal</span>
+                        <span>R$ <span id="subtotal-confirmacao">0,00</span></span>
+                    </div>
+                    <div class="linha-total">
+                        <span>Frete</span>
+                        <span>R$ <span id="frete-confirmacao">8,50</span></span>
+                    </div>
+                    <div class="linha-total">
+                        <span>Taxa</span>
+                        <span>R$ <span id="taxa-confirmacao">2,00</span></span>
+                    </div>
+                    <div class="linha-total total-final">
+                        <span>Total</span>
+                        <span>R$ <span id="total-confirmacao">0,00</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Ações -->
+            <div class="acoes-confirmacao">
+                <a href="cardapio.html" class="btn-novo-pedido">
+                    <i class="fas fa-plus"></i> Fazer Novo Pedido
+                </a>
+                <button class="btn-acompanhar" onclick="acompanharPedido()">
+                    <i class="fas fa-truck"></i> Acompanhar Entrega
+                </button>
+                <a href="#" class="btn-compartilhar" onclick="compartilharPedido()">
+                    <i class="fas fa-share-alt"></i> Compartilhar
+                </a>
+            </div>
+
+            <!-- Informações Adicionais -->
+            <div class="info-adicional">
+                <div class="info-item">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <h4>Precisa de ajuda?</h4>
+                        <p>Ligue para nós: <strong>(11) 99999-9999</strong></p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-comment"></i>
+                    <div>
+                        <h4>Alguma alteração?</h4>
+                        <p>Entre em contato imediatamente</p>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-star"></i>
+                    <div>
+                        <h4>Avalie sua experiência</h4>
+                        <p>Avalie nosso serviço após a entrega</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de Acompanhamento -->
+    <div class="modal-acompanhamento" id="modalAcompanhamento">
+        <div class="modal-acompanhamento-conteudo">
+            <div class="modal-header">
+                <h2><i class="fas fa-truck"></i> Acompanhar Pedido</h2>
+                <button class="btn-fechar" onclick="fecharModalAcompanhamento()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="etapas-entrega">
+                    <div class="etapa ativo">
+                        <div class="etapa-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="etapa-info">
+                            <h4>Pedido Confirmado</h4>
+                            <p>Seu pedido foi recebido</p>
+                            <span class="etapa-tempo">Agora</span>
+                        </div>
+                    </div>
+                    
+                    <div class="etapa">
+                        <div class="etapa-icon">
+                            <i class="fas fa-cookie-bite"></i>
+                        </div>
+                        <div class="etapa-info">
+                            <h4>Em Preparação</h4>
+                            <p>Cozinha preparando seu lanche</p>
+                            <span class="etapa-tempo">Em 5-10 min</span>
+                        </div>
+                    </div>
+                    
+                    <div class="etapa">
+                        <div class="etapa-icon">
+                            <i class="fas fa-motorcycle"></i>
+                        </div>
+                        <div class="etapa-info">
+                            <h4>Saiu para Entrega</h4>
+                            <p>Entregador a caminho</p>
+                            <span class="etapa-tempo">Em 20-25 min</span>
+                        </div>
+                    </div>
+                    
+                    <div class="etapa">
+                        <div class="etapa-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <div class="etapa-info">
+                            <h4>Entregue</h4>
+                            <p>Pedido entregue!</p>
+                            <span class="etapa-tempo">Em 30-40 min</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="entregador-info">
+                    <h3><i class="fas fa-user"></i> Seu Entregador</h3>
+                    <div class="entregador-detalhes">
+                        <div class="entregador-foto">
+                            <i class="fas fa-user-circle"></i>
+                        </div>
+                        <div class="entregador-data">
+                            <h4>João Silva</h4>
+                            <p>Moto: Honda CG 160 • Placa: ABC-1234</p>
+                            <p class="entregador-contato">
+                                <i class="fas fa-phone"></i> (11) 98888-7777
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-contatar" onclick="contatarEntregador()">
+                    <i class="fas fa-phone"></i> Contatar Entregador
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="confirmacao.js"></script>
+</body>
+</html>

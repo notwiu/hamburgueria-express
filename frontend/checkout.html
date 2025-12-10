@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍔 BurgerExpress - Checkout</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="checkout.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+        <header class="checkout-header">
+            <a href="cardapio.html" class="btn-voltar">
+                <i class="fas fa-arrow-left"></i> Voltar ao Cardápio
+            </a>
+            <h1><i class="fas fa-shopping-bag"></i> Finalizar Pedido</h1>
+            <div class="checkout-progress">
+                <div class="progress-step ativo">
+                    <span class="step-number">1</span>
+                    <span class="step-text">Carrinho</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <span class="step-number">2</span>
+                    <span class="step-text">Pagamento</span>
+                </div>
+                <div class="progress-line"></div>
+                <div class="progress-step">
+                    <span class="step-number">3</span>
+                    <span class="step-text">Confirmação</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Conteúdo Principal -->
+        <main class="checkout-container">
+            <!-- Coluna Esquerda: Carrinho e Endereço -->
+            <div class="checkout-col-esquerda">
+                <!-- Seção: Itens do Carrinho -->
+                <section class="checkout-secao" id="secao-carrinho">
+                    <h2><i class="fas fa-shopping-cart"></i> Seu Carrinho</h2>
+                    
+                    <div class="checkout-carrinho" id="checkout-carrinho">
+                        <!-- Itens serão carregados aqui via JavaScript -->
+                        <div class="carrinho-vazio">
+                            <i class="fas fa-shopping-basket"></i>
+                            <p>Seu carrinho está vazio</p>
+                            <a href="cardapio.html" class="btn-primary">
+                                <i class="fas fa-utensils"></i> Ver Cardápio
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-subtotal">
+                        <span>Subtotal:</span>
+                        <span>R$ <span id="checkout-subtotal">0,00</span></span>
+                    </div>
+                </section>
+
+                <!-- Seção: Endereço de Entrega -->
+                <section class="checkout-secao">
+                    <h2><i class="fas fa-map-marker-alt"></i> Endereço de Entrega</h2>
+                    
+                    <div class="endereco-checkout">
+                        <div class="endereco-info">
+                            <i class="fas fa-home"></i>
+                            <div>
+                                <h4 id="endereco-nome">Seu Endereço</h4>
+                                <p id="endereco-completo">Carregando endereço...</p>
+                                <p class="endereco-tempo">
+                                    <i class="fas fa-clock"></i>
+                                    Tempo estimado: <strong>30-40 minutos</strong>
+                                </p>
+                            </div>
+                        </div>
+                        <a href="index.html" class="btn-alterar-endereco">
+                            <i class="fas fa-edit"></i> Alterar
+                        </a>
+                    </div>
+                    
+                    <div class="entregar-agora">
+                        <h3><i class="fas fa-bolt"></i> Entregar agora</h3>
+                        <p>Seu pedido será preparado assim que confirmarmos o pagamento</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Coluna Direita: Resumo e Pagamento -->
+            <div class="checkout-col-direita">
+                <!-- Seção: Resumo do Pedido -->
+                <section class="checkout-secao resumo-pedido">
+                    <h2><i class="fas fa-receipt"></i> Resumo do Pedido</h2>
+                    
+                    <div class="resumo-detalhes">
+                        <div class="resumo-linha">
+                            <span>Subtotal</span>
+                            <span>R$ <span id="resumo-subtotal">0,00</span></span>
+                        </div>
+                        <div class="resumo-linha">
+                            <span>Frete</span>
+                            <span>R$ <span id="resumo-frete">8,50</span></span>
+                        </div>
+                        <div class="resumo-linha">
+                            <span>Taxa de entrega</span>
+                            <span>R$ <span id="resumo-taxa">2,00</span></span>
+                        </div>
+                        <div class="resumo-linha total">
+                            <span>Total</span>
+                            <span>R$ <span id="resumo-total">0,00</span></span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Seção: Pagamento -->
+                <section class="checkout-secao pagamento-secao">
+                    <h2><i class="fas fa-credit-card"></i> Forma de Pagamento</h2>
+                    
+                    <div class="metodos-pagamento">
+                        <!-- PIX -->
+                        <div class="metodo-pagamento ativo" data-metodo="pix" onclick="selecionarMetodo('pix')">
+                            <div class="metodo-header">
+                                <i class="fas fa-qrcode"></i>
+                                <div>
+                                    <h3>PIX</h3>
+                                    <p>Pagamento instantâneo</p>
+                                </div>
+                                <span class="metodo-selecionado">
+                                    <i class="fas fa-check-circle"></i>
+                                </span>
+                            </div>
+                            <div class="metodo-conteudo" id="pix-conteudo">
+                                <!-- Conteúdo do PIX será carregado aqui -->
+                            </div>
+                        </div>
+                        
+                        <!-- Cartão de Crédito -->
+                        <div class="metodo-pagamento" data-metodo="credito" onclick="selecionarMetodo('credito')">
+                            <div class="metodo-header">
+                                <i class="fas fa-credit-card"></i>
+                                <div>
+                                    <h3>Cartão de Crédito</h3>
+                                    <p>Parcelamento disponível</p>
+                                </div>
+                                <span class="metodo-selecionado">
+                                    <i class="fas fa-check-circle"></i>
+                                </span>
+                            </div>
+                            <div class="metodo-conteudo" id="credito-conteudo" style="display: none;">
+                                <!-- Formulário de cartão será carregado aqui -->
+                            </div>
+                        </div>
+                        
+                        <!-- Cartão de Débito -->
+                        <div class="metodo-pagamento" data-metodo="debito" onclick="selecionarMetodo('debito')">
+                            <div class="metodo-header">
+                                <i class="fas fa-university"></i>
+                                <div>
+                                    <h3>Cartão de Débito</h3>
+                                    <p>Pagamento à vista</p>
+                                </div>
+                                <span class="metodo-selecionado">
+                                    <i class="fas fa-check-circle"></i>
+                                </span>
+                            </div>
+                            <div class="metodo-conteudo" id="debito-conteudo" style="display: none;">
+                                <!-- Formulário de débito será carregado aqui -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botão de Finalizar -->
+                    <div class="checkout-finalizar">
+                        <button class="btn-finalizar-pedido" id="btn-finalizar" onclick="processarPagamento()">
+                            <i class="fas fa-lock"></i> Finalizar Pedido
+                        </button>
+                        <p class="seguranca-info">
+                            <i class="fas fa-shield-alt"></i> Seus dados estão protegidos e seguros
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal de QR Code PIX -->
+    <div class="modal-pix" id="modalPix">
+        <div class="modal-pix-conteudo">
+            <div class="modal-pix-header">
+                <h2><i class="fas fa-qrcode"></i> Pagamento via PIX</h2>
+                <button class="btn-fechar-modal" onclick="fecharModalPix()">&times;</button>
+            </div>
+            <div class="modal-pix-body">
+                <div class="pix-qr-container">
+                    <div id="qr-code"></div>
+                    <div class="pix-timer">
+                        <i class="fas fa-clock"></i>
+                        <span id="pix-timer">30</span> segundos
+                    </div>
+                </div>
+                <div class="pix-info">
+                    <h3>Como pagar:</h3>
+                    <ol>
+                        <li>Abra o app do seu banco</li>
+                        <li>Escaneie o QR Code acima</li>
+                        <li>Confira os dados e confirme o pagamento</li>
+                        <li>Aguarde a confirmação automática</li>
+                    </ol>
+                    
+                    <div class="pix-codigo">
+                        <p><strong>Código PIX (copie e cole):</strong></p>
+                        <div class="codigo-container">
+                            <code id="pix-codigo">00020126580014BR.GOV.BCB.PIX0136123e4567-e89b-12d3-a456-426614174000520400005303986540580.005802BR5925BURGER EXPRESS LTDA6009SAO PAULO61080540900062070503***6304E2CA</code>
+                            <button class="btn-copiar" onclick="copiarCodigoPix()">
+                                <i class="fas fa-copy"></i> Copiar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="pix-detalhes">
+                        <p><strong>Valor:</strong> R$ <span id="pix-valor">0,00</span></p>
+                        <p><strong>Beneficiário:</strong> Burger Express LTDA</p>
+                        <p><strong>CNPJ:</strong> 12.345.678/0001-90</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-pix-footer">
+                <p class="pix-aviso">
+                    <i class="fas fa-info-circle"></i>
+                    Após o pagamento, você será redirecionado automaticamente em <span id="redirect-timer">30</span> segundos
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Processando Pagamento -->
+    <div class="modal-processando" id="modalProcessando">
+        <div class="modal-processando-conteudo">
+            <div class="spinner"></div>
+            <h3>Processando pagamento...</h3>
+            <p>Aguarde enquanto confirmamos sua transação</p>
+        </div>
+    </div>
+
+    <script src="checkout.js"></script>
+</body>
+</html>

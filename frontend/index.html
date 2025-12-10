@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍔 BurgerExpress - Delivery</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Tela 1: CEP -->
+        <div id="tela-cep" class="tela-ativa">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-hamburger"></i>
+                    <h1>Burger<span>Express</span></h1>
+                </div>
+                <p class="slogan">Os melhores hambúrgueres artesanais da cidade!</p>
+            </div>
+            
+            <div class="card">
+                <h2><i class="fas fa-map-marker-alt"></i> Informe seu CEP para delivery</h2>
+                <p class="instrucao">Assim você terá acesso aos nossos hambúrgueres e ofertas!</p>
+                
+                <div class="input-group">
+                    <input type="text" id="cep-input" placeholder="XXXXX-XXX" maxlength="9">
+                    <button id="btn-consultar-cep" class="btn-primary">
+                        <i class="fas fa-search"></i> Consultar
+                    </button>
+                </div>
+                
+                <p class="cep-help">
+                    <i class="fas fa-question-circle"></i> Não sabe seu CEP? 
+                    <a href="https://buscacepinter.correios.com.br/" target="_blank">Consulte aqui</a>
+                </p>
+            </div>
+            
+            <div class="card hidden" id="confirmacao-endereco">
+                <h2><i class="fas fa-check-circle"></i> Confirme seu endereço</h2>
+                
+                <div class="endereco-info">
+                    <p id="endereco-completo">Rua das Flores, 123 - Jardim Primavera - São Paulo/SP</p>
+                    <p class="cep-info">CEP: <span id="cep-confirmacao">01234-567</span></p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="complemento"><i class="fas fa-home"></i> Complemento (opcional)</label>
+                    <input type="text" id="complemento" placeholder="Apto, bloco, andar, etc.">
+                </div>
+                
+                <div class="form-group">
+                    <label for="referencia"><i class="fas fa-map-pin"></i> Ponto de Referência</label>
+                    <input type="text" id="referencia" placeholder="Próximo ao...">
+                </div>
+                
+                <div class="frete-info">
+                    <div class="frete-item">
+                        <i class="fas fa-motorcycle"></i>
+                        <div>
+                            <h4>Frete</h4>
+                            <p id="valor-frete">R$ 8,50</p>
+                        </div>
+                    </div>
+                    <div class="frete-item disponivel">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h4>Entrega</h4>
+                            <p>Disponível para sua região</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <button id="btn-continuar-cardapio" class="btn-primary btn-large">
+                    <i class="fas fa-utensils"></i> Ver Cardápio Completo
+                </button>
+            </div>
+        </div>
+        
+        <!-- Carrinho Flutuante -->
+        <div id="carrinho-flutuante" class="hidden">
+            <div class="carrinho-icon" id="carrinho-toggle">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="carrinho-contador">0</span>
+            </div>
+            <div class="carrinho-total">
+                R$ <span id="carrinho-valor">0,00</span>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal do Carrinho -->
+    <div id="modal-carrinho" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-shopping-cart"></i> Seu Pedido</h3>
+                <button class="btn-fechar">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div id="carrinho-vazio" class="carrinho-vazio">
+                    <i class="fas fa-shopping-basket"></i>
+                    <p>Seu carrinho está vazio</p>
+                </div>
+                
+                <div id="carrinho-itens" class="carrinho-itens hidden"></div>
+                
+                <div id="carrinho-resumo" class="carrinho-resumo hidden">
+                    <div class="resumo-item">
+                        <span>Subtotal</span>
+                        <span>R$ <span id="resumo-subtotal">0,00</span></span>
+                    </div>
+                    <div class="resumo-item">
+                        <span>Frete</span>
+                        <span>R$ <span id="resumo-frete">8,50</span></span>
+                    </div>
+                    <div class="resumo-item total">
+                        <span>Total</span>
+                        <span>R$ <span id="resumo-total">0,00</span></span>
+                    </div>
+                    
+                    <button id="btn-finalizar-pedido" class="btn-primary btn-large btn-block">
+                        <i class="fas fa-lock"></i> Finalizar Pedido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="js/main.js"></script>
+    <script src="js/cep.js"></script>
+    <script src="js/carrinho.js"></script>
+</body>
+</html>

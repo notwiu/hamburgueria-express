@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🍔 BurgerExpress - Cardápio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="cardapio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header class="header-cardapio">
+        <div class="container">
+            <div class="header-top">
+                <a href="index.html" class="btn-voltar">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </a>
+                <div class="header-info">
+                    <div class="local-entrega">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <p>Entregando em:</p>
+                            <h4 id="endereco-header">Carregando endereço...</h4>
+                        </div>
+                    </div>
+                    <div class="tempo-entrega">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <p>Tempo estimado:</p>
+                            <h4>30-40 min</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="logo-cardapio">
+                <h1><i class="fas fa-hamburger"></i> Burger<span>Express</span></h1>
+                <p class="slogan">Hambúrgueres artesanais feitos com paixão</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navegação por Categorias -->
+    <nav class="categorias-nav">
+        <div class="container">
+            <div class="categorias-lista" id="categoriasLista">
+                <button class="categoria-btn ativo" data-categoria="todos">
+                    <i class="fas fa-burger"></i> Todos
+                </button>
+                <button class="categoria-btn" data-categoria="hamburgueres">
+                    <i class="fas fa-cheeseburger"></i> Hambúrgueres
+                </button>
+                <button class="categoria-btn" data-categoria="combos">
+                    <i class="fas fa-gift"></i> Combos
+                </button>
+                <button class="categoria-btn" data-categoria="bebidas">
+                    <i class="fas fa-glass-whiskey"></i> Bebidas
+                </button>
+                <button class="categoria-btn" data-categoria="acompanhamentos">
+                    <i class="fas fa-french-fries"></i> Acompanhamentos
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main class="container main-cardapio">
+        <!-- Seção: Hambúrgueres Artesanais -->
+        <section class="secao-cardapio" id="hamburgueres">
+            <div class="secao-header">
+                <h2><i class="fas fa-star"></i> Hambúrgueres Artesanais</h2>
+                <p class="secao-descricao">Feitos com carne 100% bovina e ingredientes selecionados</p>
+            </div>
+            
+            <div class="grade-produtos">
+                <!-- Produto 1 -->
+                <div class="card-produto" data-categoria="hamburgueres">
+                    <div class="produto-imagem" style="background: linear-gradient(45deg, #ff9a00, #ff6b35);">
+                        <span class="destaque">Mais Vendido</span>
+                        <img src="images/hamburguer-classico.png" alt="Clássico Burger" class="produto-img">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Clássico Burger</h3>
+                        <p class="produto-descricao">Pão brioche, hambúrguer 180g, queijo, alface, tomate, maionese especial</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 24,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="1" data-nome="Clássico Burger" data-preco="24.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Produto 2 -->
+                <div class="card-produto" data-categoria="hamburgueres">
+                    <div class="produto-imagem" style="background: linear-gradient(45deg, #8B4513, #A0522D);">
+                        <span class="destaque destaque-vermelho">Novo</span>
+                        <img src="images/bacon-supreme.png" alt="Bacon Supreme" class="produto-img">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Bacon Supreme</h3>
+                        <p class="produto-descricao">Bacon crocante, cheddar, cebola caramelizada, molho barbecue</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 29,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="2" data-nome="Bacon Supreme" data-preco="29.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Produto 3 -->
+                <div class="card-produto" data-categoria="hamburgueres">
+                    <div class="produto-imagem" style="background: linear-gradient(45deg, #32CD32, #228B22);">
+                        <img src="images/veggie.png" alt="Veggie" class="produto-img">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Veggie Delight</h3>
+                        <p class="produto-descricao">Hambúrguer de grão-de-bico, rúcula, tomate seco, queijo coalho</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 22,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="3" data-nome="Veggie Delight" data-preco="22.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Produto 4 -->
+                <div class="card-produto" data-categoria="hamburgueres">
+                    <div class="produto-imagem" style="background: linear-gradient(45deg, #FFD700, #FFA500);">
+                        <img src="images/duplo-cheddar.png" alt="Duplo Cheddar" class="produto-img">
+                    </div>
+                    <div class="produto-info">
+                        <h3>Duplo Cheddar</h3>
+                        <p class="produto-descricao">Dois hambúrgueres, cheddar derretido, cebola roxa, picles</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 32,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="4" data-nome="Duplo Cheddar" data-preco="32.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção: Combos Especiais -->
+        <section class="secao-cardapio" id="combos">
+            <div class="secao-header">
+                <h2><i class="fas fa-crown"></i> Combos Especiais</h2>
+                <p class="secao-descricao">Economize com nossos combos completos</p>
+            </div>
+            
+            <div class="grade-produtos">
+                <!-- Combo 1 -->
+                <div class="card-produto combo" data-categoria="combos">
+                    <div class="produto-imagem" style="background: linear-gradient(45deg, #FF6B35, #FF8C42);">
+                        <span class="destaque destaque-promocao">Economize R$ 15</span>
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Combo Família</h3>
+                        <p class="produto-descricao">2x Clássico + 2x Coca-Cola 600ml + Batata Frita Grande</p>
+                        <div class="produto-preco">
+                            <span class="preco-antigo">R$ 104,80</span>
+                            <span class="preco-atual">R$ 89,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="101" data-nome="Combo Família" data-preco="89.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Combo 2 -->
+                <div class="card-produto combo" data-categoria="combos">
+                    <div class="produto-imagem" style="background: linear-gradient(45deg, #4A90E2, #357ABD);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Combo Duplo</h3>
+                        <p class="produto-descricao">1x Bacon Supreme + 1x Coca-Cola 350ml + Batata Média</p>
+                        <div class="produto-preco">
+                            <span class="preco-antigo">R$ 56,80</span>
+                            <span class="preco-atual">R$ 49,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="102" data-nome="Combo Duplo" data-preco="49.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Combo 3 -->
+                <div class="card-produto combo" data-categoria="combos">
+                    <div class="produto-imagem" style="background: linear-gradient(45deg, #50C878, #3CB371);">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Combo Vegetariano</h3>
+                        <p class="produto-descricao">1x Veggie Delight + Suco Natural + Batata Doce</p>
+                        <div class="produto-preco">
+                            <span class="preco-antigo">R$ 45,80</span>
+                            <span class="preco-atual">R$ 39,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="103" data-nome="Combo Vegetariano" data-preco="39.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção: Bebidas -->
+        <section class="secao-cardapio" id="bebidas">
+            <div class="secao-header">
+                <h2><i class="fas fa-glass-whiskey"></i> Bebidas</h2>
+                <p class="secao-descricao">Para acompanhar seu hambúrguer</p>
+            </div>
+            
+            <div class="grade-produtos grade-bebidas">
+                <!-- Bebida 1 -->
+                <div class="card-produto bebida" data-categoria="bebidas">
+                    <div class="produto-imagem bebida-imagem" style="background: linear-gradient(45deg, #8B0000, #B22222);">
+                        <i class="fas fa-wine-bottle"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Coca-Cola 2L</h3>
+                        <p class="produto-descricao">Refrigerante Coca-Cola 2 litros</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 12,00</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="201" data-nome="Coca-Cola 2L" data-preco="12.00">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Bebida 2 -->
+                <div class="card-produto bebida" data-categoria="bebidas">
+                    <div class="produto-imagem bebida-imagem" style="background: linear-gradient(45deg, #FF8C00, #FFA500);">
+                        <i class="fas fa-glass-whiskey"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Suco de Laranja</h3>
+                        <p class="produto-descricao">Suco natural 500ml</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 8,00</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="202" data-nome="Suco de Laranja" data-preco="8.00">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Bebida 3 -->
+                <div class="card-produto bebida" data-categoria="bebidas">
+                    <div class="produto-imagem bebida-imagem" style="background: linear-gradient(45deg, #87CEEB, #00BFFF);">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Água Mineral</h3>
+                        <p class="produto-descricao">Água sem gás 500ml</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 4,00</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="203" data-nome="Água Mineral" data-preco="4.00">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Bebida 4 -->
+                <div class="card-produto bebida" data-categoria="bebidas">
+                    <div class="produto-imagem bebida-imagem" style="background: linear-gradient(45deg, #8B4513, #A0522D);">
+                        <i class="fas fa-ice-cream"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Milkshake Chocolate</h3>
+                        <p class="produto-descricao">Milkshake 400ml com calda</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 14,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="204" data-nome="Milkshake Chocolate" data-preco="14.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Seção: Acompanhamentos -->
+        <section class="secao-cardapio" id="acompanhamentos">
+            <div class="secao-header">
+                <h2><i class="fas fa-french-fries"></i> Acompanhamentos</h2>
+                <p class="secao-descricao">Para deixar seu lanche ainda melhor</p>
+            </div>
+            
+            <div class="grade-produtos grade-acompanhamentos">
+                <!-- Acompanhamento 1 -->
+                <div class="card-produto acompanhamento" data-categoria="acompanhamentos">
+                    <div class="produto-imagem acompanhamento-imagem" style="background: linear-gradient(45deg, #FFD700, #FFA500);">
+                        <i class="fas fa-french-fries"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Batata Frita Média</h3>
+                        <p class="produto-descricao">Porção para 1 pessoa</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 12,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="301" data-nome="Batata Frita Média" data-preco="12.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Acompanhamento 2 -->
+                <div class="card-produto acompanhamento" data-categoria="acompanhamentos">
+                    <div class="produto-imagem acompanhamento-imagem" style="background: linear-gradient(45deg, #D2691E, #8B4513);">
+                        <i class="fas fa-bacon"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Onion Rings</h3>
+                        <p class="produto-descricao">Anéis de cebola empanados</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 14,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="302" data-nome="Onion Rings" data-preco="14.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Acompanhamento 3 -->
+                <div class="card-produto acompanhamento" data-categoria="acompanhamentos">
+                    <div class="produto-imagem acompanhamento-imagem" style="background: linear-gradient(45deg, #FF6347, #FF4500);">
+                        <i class="fas fa-hotdog"></i>
+                    </div>
+                    <div class="produto-info">
+                        <h3>Nuggets (8 unidades)</h3>
+                        <p class="produto-descricao">Frango empanado crocante</p>
+                        <div class="produto-preco">
+                            <span class="preco-atual">R$ 16,90</span>
+                        </div>
+                        <button class="btn-adicionar" data-id="303" data-nome="Nuggets (8 unidades)" data-preco="16.90">
+                            <i class="fas fa-plus"></i> Adicionar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Carrinho Flutuante -->
+    <div class="carrinho-flutuante" id="carrinhoFlutuante">
+        <div class="carrinho-conteudo" onclick="abrirCarrinho()">
+            <div class="carrinho-icone">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="contador-carrinho" id="contadorCarrinho">0</span>
+            </div>
+            <div class="carrinho-info">
+                <p class="carrinho-texto">Ver carrinho</p>
+                <p class="carrinho-total">R$ <span id="totalCarrinho">0,00</span></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal do Carrinho -->
+    <div class="modal-carrinho" id="modalCarrinho">
+        <div class="modal-conteudo">
+            <div class="modal-cabecalho">
+                <h3><i class="fas fa-shopping-cart"></i> Seu Carrinho</h3>
+                <button onclick="fecharCarrinho()" class="fechar-modal">&times;</button>
+            </div>
+            
+            <div class="modal-corpo" id="corpoCarrinho">
+                <!-- Itens serão inseridos aqui pelo JavaScript -->
+            </div>
+            
+            <div class="modal-rodape" id="rodapeCarrinho">
+                <div class="resumo-pedido">
+                    <div class="linha-resumo">
+                        <span>Subtotal</span>
+                        <span>R$ <span id="subtotalCarrinho">0,00</span></span>
+                    </div>
+                    <div class="linha-resumo">
+                        <span>Frete</span>
+                        <span>R$ <span id="freteCarrinho">8,50</span></span>
+                    </div>
+                    <div class="linha-resumo total">
+                        <span>Total</span>
+                        <span>R$ <span id="totalFinal">0,00</span></span>
+                    </div>
+                    
+                    <button onclick="irParaCheckout()" class="btn-finalizar">
+                        <i class="fas fa-lock"></i> Finalizar Pedido
+                    </button>
+                    
+                    <button onclick="continuarComprando()" class="btn-continuar">
+                        <i class="fas fa-arrow-left"></i> Continuar Comprando
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal de Adicionado -->
+    <div class="modal-adicionado" id="modalAdicionado">
+        <div class="modal-adicionado-conteudo">
+            <i class="fas fa-check-circle"></i>
+            <p>Item adicionado ao carrinho!</p>
+        </div>
+    </div>
+
+    <script src="cardapio.js"></script>
+</body>
+</html>
