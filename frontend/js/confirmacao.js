@@ -23,7 +23,7 @@ function carregarPedidoConfirmacao() {
             
             // Calcular totais
             const subtotal = pedido.itens ? pedido.itens.reduce((total, item) => total + (item.preco * item.quantidade), 0) : 0;
-            const frete = pedido.frete || 8.50;
+            const frete = pedido.frete || 7.50;
             const taxa = pedido.taxa || 2.00;
             const total = pedido.total || (subtotal + frete + taxa);
             

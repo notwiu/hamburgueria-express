@@ -108,7 +108,7 @@ function carregarEndereco() {
 // Funções de Total
 function calcularTotal() {
     const subtotal = carrinhoItens.reduce((total, item) => total + (item.preco * item.quantidade), 0);
-    const frete = 8.50;
+    const frete = 7.50;
     const taxa = 2.00;
     totalPedido = subtotal + frete + taxa;
     
