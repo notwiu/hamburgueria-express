@@ -2,7 +2,6 @@
 
 [![Status](https://img.shields.io/badge/Status-Completo-success)](https://github.com)
 [![Technologies](https://img.shields.io/badge/Stack-HTML%20|%20CSS%20|%20JS%20|%20Python-blue)](https://github.com)
-[![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 Plataforma completa de delivery de hambúrgueres com interface moderna, carrinho interativo e múltiplos métodos de pagamento.
 
@@ -156,9 +155,6 @@ git push origin feature/sua-funcionalidade
 - [ ] Notificações via WhatsApp
 - [ ] Painel administrativo
 
-## Licença
-
-MIT © 2024
 
 ## Suporte
 
